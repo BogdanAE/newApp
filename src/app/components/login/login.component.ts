@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 export class LoginComponent implements OnInit {
 
   state = false;
+  buttonText = "Login";
 
   constructor(private loginService: LoginService) {
   
@@ -20,5 +21,9 @@ export class LoginComponent implements OnInit {
 
   changeState() {
     this.state = !this.state;
+    if(this.state)
+      this.buttonText = "SignUp";
+    else
+      this.buttonText = "Login";
   }
 }

@@ -2,38 +2,40 @@
   <img src="../../../assets/launch.jpg" fxFlex="50%">
   <div class="col2" fxFlex>
     <div class="selectorContainer" fxLayout="row" fxLayoutGap="5px">
-      <button 
-      mat-button 
-      fxFlex="50%" 
-      (click)="changeState()"
-      [ngStyle]="{'background-color': state ? 'red' : 'green'}" >Login</button>
-      <button 
-      mat-button 
-      fxFlex 
-      (click) = "changeState()"
-      [ngStyle]="{'background-color': !state ? 'red' : 'green'}"  >Signup</button>
+      <button mat-button fxFlex="50%" (click)="changeState()" [ngStyle]="{'background-color': state ? 'rgba(89, 168, 247, 0.33)' : 'transparent'}">Login</button>
+      <button mat-button fxFlex (click)="changeState()" [ngStyle]="{'background-color': !state ? 'rgba(89, 168, 247, 0.33)' : 'transparent'}">Signup</button>
     </div>
-    <div class="formContainer" fxLayout="column">
+
+    <div class="formContainer" fxLayout="column" *ngIf="!state; else signup">
       <mat-form-field>
-        <input fxFlex="50%" 
-        matInput placeholder="email" 
-        matAutosizeMinRows="1" 
-        matAutosizeMaxRows="4" #email 
-        (input) = "this.loginService.loginEmail($event)">
+        <input fxFlex="50%" matInput placeholder="email" matAutosizeMinRows="1" matAutosizeMaxRows="4" #email (input)="this.loginService.loginEmail($event)">
       </mat-form-field>
       <p>{{email.value}}</p>
       <mat-form-field>
-        <input fxFlex 
-        matInput 
-        placeholder="password" 
-        type="password" 
-        #password 
-        (input) = "this.loginService.loginPass($event)">
-      </mat-form-field> 
+        <input fxFlex matInput placeholder="password" type="password" #password (input)="this.loginService.loginPass($event)">
+      </mat-form-field>
       <p>{{password.value}}</p>
     </div>
+
+    <ng-template #signup>
+      <div class="formContainer" fxLayout="column">
+        <mat-form-field>
+          <input fxFlex="50%" matInput placeholder="email" matAutosizeMinRows="1" matAutosizeMaxRows="4" #email (input)="this.loginService.loginEmail($event)">
+        </mat-form-field>
+        <p>{{email.value}}</p>
+        <mat-form-field>
+          <input fxFlex matInput placeholder="Enter your password" type="password" #password (input)="this.loginService.loginPass($event)">
+        </mat-form-field>
+        <mat-form-field>
+          <input fxFlex matInput placeholder="Re-enter password" type="password" #password (input)="this.loginService.loginPass($event)">
+        </mat-form-field>
+        <p>{{password.value}}</p>
+      </div>
+    </ng-template>
+
+
     <a [routerLink]="['/home']">
-      <button mat-raised-button (click) = "this.loginService.showData()">Login</button>
+      <button mat-raised-button (click)="this.loginService.showData()">{{buttonText}}</button>
     </a>
 
   </div>
