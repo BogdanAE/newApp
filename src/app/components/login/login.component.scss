@@ -9,18 +9,17 @@ input{
   height: 40px;
 }
 
+::placeholder  {
+  // color: rgba(89, 168, 247, 0.33);
+  color: red;
+}
+
 .formContainer {
   margin-top: calc(50vh/2 - 80px);
 }
 
 .selectorContainer > button {
   background-color: rgba(54, 160, 201, 0.1);  
+  border: 1px solid rgba(89, 168, 247, 0.33);
 }
 
-.active {
-  background-color: red;
-}
-
-.inactive {
-  background-color: blue;
-}
