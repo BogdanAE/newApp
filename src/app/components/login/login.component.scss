@@ -1,0 +1,18 @@
+.container {
+  width: 70vw;
+  margin-left: 15vw;
+  height: 80vh;
+  margin-top: 9vh;
+}
+
+input{
+  height: 40px;
+}
+
+.formContainer {
+  margin-top: calc(80vh/2 - 80px);
+}
+
+.selectorContainer > button {
+  background-color: rgba(54, 160, 201, 0.1);  
+}
