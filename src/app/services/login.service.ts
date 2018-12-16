@@ -7,8 +7,9 @@ export class LoginService {
 
   constructor() { }
 
-  email;
-  password;
+  email:string;
+  password:string;
+  state:boolean = false;
 
   loginEmail(email: string){
     this.email = (<HTMLInputElement>event.target).value;
@@ -22,6 +23,6 @@ export class LoginService {
     this.loginEmail;
     this.loginPass;
     console.log(this.password +' '+  this.email);
-
   }
+  
 }

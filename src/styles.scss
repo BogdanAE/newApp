@@ -1,3 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 
-body { font-family: Roboto, "Helvetica Neue", sans-serif; }
+$backgroundColor: rgba(89, 168, 247, 0.33);
+
+body { font-family: Roboto, "Helvetica Neue", sans-serif; background-color: $backgroundColor}

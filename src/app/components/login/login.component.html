@@ -1,9 +1,17 @@
 <div class="container" fxLayout="row" fxLayoutGap="10px">
   <img src="../../../assets/launch.jpg" fxFlex="50%">
   <div class="col2" fxFlex>
-    <div class="selectorContainer" fxLayout="row">
-      <button mat-button fxFlex="50%">Login</button>
-      <button mat-button fxFlex>Signup</button>
+    <div class="selectorContainer" fxLayout="row" fxLayoutGap="5px">
+      <button 
+      mat-button 
+      fxFlex="50%" 
+      (click)="changeState()"
+      [ngStyle]="{'background-color': state ? 'red' : 'green'}" >Login</button>
+      <button 
+      mat-button 
+      fxFlex 
+      (click) = "changeState()"
+      [ngStyle]="{'background-color': !state ? 'red' : 'green'}"  >Signup</button>
     </div>
     <div class="formContainer" fxLayout="column">
       <mat-form-field>

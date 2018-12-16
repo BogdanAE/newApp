@@ -16,3 +16,11 @@ input{
 .selectorContainer > button {
   background-color: rgba(54, 160, 201, 0.1);  
 }
+
+.active {
+  background-color: red;
+}
+
+.inactive {
+  background-color: blue;
+}

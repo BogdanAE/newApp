@@ -9,11 +9,16 @@ import { Observable } from 'rxjs';
 })
 export class LoginComponent implements OnInit {
 
- 
+  state = false;
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService) {
+  
+   }
 
   ngOnInit() {
   }
 
+  changeState() {
+    this.state = !this.state;
+  }
 }
