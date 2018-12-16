@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
 
   changeState() {
     this.state = !this.state;
-    if(this.state)
+    if(!this.state)
       this.buttonText = "SignUp";
     else
       this.buttonText = "Login";

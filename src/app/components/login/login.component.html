@@ -6,7 +6,7 @@
       <button mat-button fxFlex (click)="changeState()" [ngStyle]="{'background-color': !state ? 'rgba(89, 168, 247, 0.33)' : 'transparent'}">Signup</button>
     </div>
 
-    <div class="formContainer" fxLayout="column" *ngIf="!state; else signup">
+    <div class="formContainer" fxLayout="column" *ngIf="state; else signup">
       <mat-form-field>
         <input fxFlex="50%" matInput placeholder="email" matAutosizeMinRows="1" matAutosizeMaxRows="4" #email (input)="this.loginService.loginEmail($event)">
       </mat-form-field>
@@ -27,9 +27,9 @@
           <input fxFlex matInput placeholder="Enter your password" type="password" #password (input)="this.loginService.loginPass($event)">
         </mat-form-field>
         <mat-form-field>
-          <input fxFlex matInput placeholder="Re-enter password" type="password" #password (input)="this.loginService.loginPass($event)">
+          <input fxFlex matInput placeholder="Re-enter password" type="password" #password1 (input)="this.loginService.loginPass($event)">
         </mat-form-field>
-        <p>{{password.value}}</p>
+        <p>{{password1.value}}</p>
       </div>
     </ng-template>
 
