@@ -1,6 +1,7 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, Input } from '@angular/core';
 import { LoginService } from 'src/app/services/login.service';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,13 +10,18 @@ import { Observable } from 'rxjs';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private loginService: LoginService) {
-  
-   }
+  constructor(private loginService: LoginService,private route: Router ) {
 
-  ngOnInit() {
-    
   }
 
-  
+  @Input() rePassVar;
+
+  ngOnInit() {
+
+  }
+  onSubmit() {
+    // console.log(this.rePassVar);
+    this.route.navigate(['/home']);
+  }
+
 }

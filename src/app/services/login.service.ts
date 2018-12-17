@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Input } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -30,13 +30,12 @@ export class LoginService {
 
   checkAccept(event):void {
     this.accepted = !this.accepted;
-
     this.disableButton = !this.disableButton;
   }
 
   changeState():boolean {
     this.state = !this.state;
-    if (this.state && !this.accepted)
+    if (this.state)
       this.disableButton = false;
     else
       this.disableButton = true;
@@ -46,4 +45,6 @@ export class LoginService {
       this.textButton = "Signup";
     return this.state
   }
+
+  
 }

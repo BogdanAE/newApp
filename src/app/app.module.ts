@@ -10,6 +10,8 @@ import { MaterialModule } from './material.module';
 import { RouterModule, Routes } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HomeComponent } from './components/home/home.component';
+import { FormsModule }   from '@angular/forms';
+
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
@@ -29,6 +31,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
     FlexLayoutModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

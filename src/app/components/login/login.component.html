@@ -5,38 +5,51 @@
       <button mat-button fxFlex="50%" (click)="this.loginService.changeState()" [ngStyle]="{'background-color': this.loginService.state ? 'rgba(89, 168, 247, 0.33)' : 'transparent'}">Login</button>
       <button mat-button fxFlex (click)="this.loginService.changeState()" [ngStyle]="{'background-color': !this.loginService.state ? 'rgba(89, 168, 247, 0.33)' : 'transparent'}">Signup</button>
     </div>
+    <mat-card>
+      <form novalidate #loginForm="ngForm" (ngSubmit)="onSubmit()">
+        <mat-card-content>
+          <div class="formContainer" fxLayout="column" *ngIf="this.loginService.state; else signup">
+            <mat-form-field>
+              <input fxFlex="50%" matInput placeholder="email" matAutosizeMinRows="1" matAutosizeMaxRows="4" #email
+                (input)="this.loginService.loginEmail($event)" required>
+            </mat-form-field>
+            <!-- <p>{{email.value}}</p> -->
+            <!-- <h1>{{email.$valid}}</h1> -->
+            <mat-form-field>
+              <input fxFlex matInput placeholder="password" type="password" #password (input)="this.loginService.loginPass($event)"
+                required>
+            </mat-form-field>
+            <!-- <p>{{password.value}}</p> -->
+          </div>
 
-    <div class="formContainer" fxLayout="column" *ngIf="this.loginService.state; else signup">
-      <mat-form-field>
-        <input fxFlex="50%" matInput placeholder="email" matAutosizeMinRows="1" matAutosizeMaxRows="4" #email (input)="this.loginService.loginEmail($event)">
-      </mat-form-field>
-      <p>{{email.value}}</p>
-      <mat-form-field>
-        <input fxFlex matInput placeholder="password" type="password" #password (input)="this.loginService.loginPass($event)">
-      </mat-form-field>
-      <p>{{password.value}}</p>
-    </div>
-
-    <ng-template #signup>
-      <div class="formContainer" fxLayout="column">
-        <mat-form-field>
-          <input fxFlex="50%" matInput placeholder="email" matAutosizeMinRows="1" matAutosizeMaxRows="4" #email (input)="this.loginService.loginEmail($event)">
-        </mat-form-field>
-        <p>{{email.value}}</p>
-        <mat-form-field>
-          <input fxFlex matInput placeholder="Enter your password" type="password" #password (input)="this.loginService.loginPass($event)">
-        </mat-form-field>
-        <mat-form-field>
-          <input fxFlex matInput placeholder="Re-enter password" type="password" #password1 (input)="this.loginService.loginPass($event)">
-        </mat-form-field>
-        <mat-checkbox value="1" (click)="this.loginService.checkAccept($event)">Do you agree with <b>us</b> ??!</mat-checkbox>
-        <p>{{password1.value}}</p>
-      </div>
-    </ng-template>
-
-    <a [routerLink]="['/home']">
-      <button mat-raised-button (click)="this.loginService.showData()" [disabled]="this.loginService.disableButton">{{this.loginService.textButton}}</button>
-    </a>
-
+          <ng-template #signup>
+            <div class="formContainer" fxLayout="column">
+              <mat-form-field>
+                <input fxFlex="50%" matInput placeholder="email"  #email
+                  (input)="this.loginService.loginEmail($event)" name="email" [(ngModel)]="emailVar" required>
+              </mat-form-field>
+              <!-- <p>{{email.value}}</p> -->
+              <mat-form-field>
+                <input fxFlex matInput name="passVar" placeholder="Enter your password" type="password" #password (input)="this.loginService.loginPass($event)"
+                 required [(ngModel)]="passVar">
+              </mat-form-field>
+              <mat-form-field>
+                <input fxFlex matInput placeholder="Re-enter password" type="password" #password1 name="rePassVar" [(ngModel)]="rePassVar" (input)="this.loginService.loginPass($event)"
+                  required >
+              </mat-form-field>
+              <mat-checkbox value="1" (click)="this.loginService.checkAccept($event)"  required>Do you agree with <b>us</b>
+                ??!</mat-checkbox>
+              <!-- <p>{{password1.value}}</p> -->
+            </div>
+          </ng-template>
+          <!-- 
+      <a [routerLink]="['/home']">
+        <button mat-raised-button type="submit" (click)="this.loginService.showData()" [disabled]="this.loginService.disableButton">{{this.loginService.textButton}}</button>
+      </a> -->
+          <button mat-raised-button type="submit" [disabled]="loginForm.invalid || this.loginService.disableButton">{{this.loginService.textButton}}</button>
+          <!-- <p>{{loginForm.invalid}}</p> -->
+        </mat-card-content>
+      </form>
+    </mat-card>
   </div>
 </div>
