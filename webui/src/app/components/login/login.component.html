@@ -21,7 +21,7 @@
             <input fxFlex matInput placeholder="password" type="password" formControlName="password" required>
           </mat-form-field>
         </div>
-        <!-- {{loginForm.valid}} -->
+        {{loginForm.valid}}
         <button mat-raised-button type="submit" [disabled]="!loginForm.valid && state === 'login'"[style.visibility]="state === 'login' ? 'visible' : 'hidden'">Login</button>
       </form>
 
