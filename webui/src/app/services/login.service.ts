@@ -1,50 +1,15 @@
 import { Injectable, Input } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  email: string;
-  password: string;
-  state: boolean = false;
-  accepted: boolean = false;
-  disableButton = true;
-  textButton:string = "Signup"
-
-  loginEmail(email: string):void {
-    this.email = (<HTMLInputElement>event.target).value;
+  getUser(object){
+    // console.log(this.http.get('http://localhost:3000/login'))
+    return this.http.post('http://localhost:3000/login', object);
   }
-
-  loginPass(password: string):void {
-    this.password = (<HTMLInputElement>event.target).value;
-  }
-
-  showData():void {
-    this.loginEmail;
-    this.loginPass;
-    console.log(this.password + ' ' + this.email);
-  }
-
-  checkAccept(event):void {
-    this.accepted = !this.accepted;
-    this.disableButton = !this.disableButton;
-  }
-
-  changeState():boolean {
-    this.state = !this.state;
-    if (this.state)
-      this.disableButton = false;
-    else
-      this.disableButton = true;
-    if (this.state)
-      this.textButton = "Login";
-    else
-      this.textButton = "Signup";
-    return this.state
-  }
-
-  
 }

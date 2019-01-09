@@ -16,11 +16,19 @@ input{
 
 .formContainer {
   margin-top: calc(50vh/2 - 80px);
+  mat-form-field{
+    width: 100%;
+    
+  }
 }
 
 .selectorContainer > button {
   background-color: rgba(54, 160, 201, 0.1);  
   border: 1px solid rgba(89, 168, 247, 0.33);
+}
+
+mat-button-toggle-group{
+  width: 100%;
 }
 
 img{

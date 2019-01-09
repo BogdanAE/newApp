@@ -6,8 +6,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import {MatRadioModule} from '@angular/material/radio';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+
 
 
 
@@ -20,7 +22,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatInputModule,
     MatFormFieldModule,
     MatRadioModule,
-    MatCheckboxModule
+    MatCheckboxModule, MatButtonToggleModule
   ]
 })
 export class MaterialModule { }
