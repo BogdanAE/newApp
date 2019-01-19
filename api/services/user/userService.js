@@ -1,23 +1,27 @@
 const Joi = require('joi');
 
-exports = module.exports = (userModel, schemaValidation, auth) => {
+exports = module.exports = (userModel, schemaValidation, auth, response) => {
 
 	return {
 
 		async findUser(user) {
 			let userFound = await userModel.findUserByEmail(user);
-			try {
-				let token = await auth.createToken(userFound);
-				return {
-					admin: userFound.admin,
-					firstName: userFound.userName,
-					lastName: userFound.lastName,
-					email: userFound.email,
-					token: token
-				};
-
-			} catch (error) {
-				return error;
+			if(userFound !== void 0) {
+				try {
+					let token = await auth.createToken(userFound);
+					return response.onSuccess({
+						admin: userFound.admin,
+						firstName: userFound.userName,
+						lastName: userFound.lastName,
+						email: userFound.email,
+						token: token
+					});
+	
+				} catch (error) {
+					return error;
+				}
+			} else {
+				return response.onFailure('No user found');
 			}
 
 		},
@@ -48,4 +52,4 @@ exports = module.exports = (userModel, schemaValidation, auth) => {
 
 exports['@singleton'] = true;
 exports['@async'] = false;
-exports['@require'] = ['model/user/userModel', 'config/schemas/validation/user', 'lib/authorization'];
+exports['@require'] = ['model/user/userModel', 'config/schemas/validation/user', 'lib/authorization', 'lib/responseTypes'];

@@ -10,7 +10,7 @@ exports = module.exports = (db) => {
 
 		async findUserByEmail(user) {
 			let findUser = await db.userModel.find({ email: user.email });
-
+			
 			return findUser[0];
 		},
 
