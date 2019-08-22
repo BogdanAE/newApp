@@ -18,7 +18,7 @@ exports = module.exports = (errorHandler, handleUser, config, auth, handleCommen
 	});
 
 	// User endpoints
-	api.post('/login', handleUser.findUser);
+	api.get('/signin', handleUser.findUser);
 	api.get('/get', auth.validate, handleUser.getUser);
 	api.post('/signup', handleUser.saveUser);
 
